@@ -44,7 +44,9 @@ sudo -E sed -i -e 's/password_secret =.*/password_secret = '$SECRET'/' /etc/gray
 start graylog-server
 
 # Install graylog-web
-
 apt-get -y install graylog-web
+
+SECRET=$(pwgen -s 96 1)
+-E sed -i -e 's/application\.secret=""/application\.secret="'$SECRET'"/' /etc/graylog/web/web.conf
 sed -i -e 's/graylog2-server.uris=""/graylog2-server.uris="http:\/\/127.0.0.1:12900\/"/g' /etc/graylog/web/web.conf
 start graylog-web
