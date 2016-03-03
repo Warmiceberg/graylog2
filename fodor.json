@@ -17,7 +17,7 @@
 		}
 	],
 	"size": {
-		"suggested": "1024mb"
+		"suggested": "4096mb"
 	},
 	"distro": "ubuntu-14-04-x64",
 	"description": "Automatically sets up a Graylog2 instance",
