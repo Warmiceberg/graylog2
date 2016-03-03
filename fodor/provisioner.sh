@@ -1,5 +1,6 @@
 #!/bin/bash
-sudo apt-get install -y python-software-properties debconf-utils
+sudo apt-get install -y python-software-properties debconf-utils pwgen
+
 
 add-apt-repository ppa:webupd8team/java
 apt-key adv --keyserver keyserver.ubuntu.com --recv 7F0CEB10
@@ -36,6 +37,9 @@ echo "elasticsearch_cluster_name = graylog" >> /etc/graylog/server/server.conf
 echo "elasticsearch_discovery_zen_ping_multicast_enabled = false" >> /etc/graylog/server/server.conf
 echo "elasticsearch_discovery_zen_ping_unicast_hosts = 127.0.0.1:9300" >> /etc/graylog/server/server.conf
 sed -i -e 's/elasticsearch_shards = 4/elasticsearch_shards = 1/g' /etc/graylog/server/server.conf
+
+SECRET=$(pwgen -s 96 1)
+sudo -E sed -i -e 's/password_secret =.*/password_secret = '$SECRET'/' /etc/graylog/server/server.conf
 
 start graylog-server
 
