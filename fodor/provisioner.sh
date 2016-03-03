@@ -18,10 +18,9 @@ apt-get -y install oracle-java8-installer
 
 # Install Elasticsearch
 apt-get -y install elasticsearch
-
+sed -i -e 's/#cluster.name: elasticsearch/cluster.name: graylog/g' /etc/elasticsearch/elasticsearch.yml
 service elasticsearch restart
 update-rc.d elasticsearch defaults 95 10
-
 
 # Install graylog-server
 wget https://packages.graylog2.org/repo/packages/graylog-1.3-repository-ubuntu14.04_latest.deb
@@ -33,7 +32,7 @@ apt-get install graylog-server
 
 # graylog-server config file
 echo "rest_transport_uri = http://127.0.0.1:12900/" >> /etc/graylog/server/server.conf
-echo "elasticsearch_cluster_name = graylog-development" >> /etc/graylog/server/server.conf
+echo "elasticsearch_cluster_name = graylog" >> /etc/graylog/server/server.conf
 echo "elasticsearch_discovery_zen_ping_multicast_enabled = false" >> /etc/graylog/server/server.conf
 echo "elasticsearch_discovery_zen_ping_unicast_hosts = 127.0.0.1:9300" >> /etc/graylog/server/server.conf
 sed -i -e 's/elasticsearch_shards = 4/elasticsearch_shards = 1/g' /etc/graylog/server/server.conf
