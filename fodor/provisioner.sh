@@ -39,7 +39,7 @@ echo "elasticsearch_discovery_zen_ping_unicast_hosts = 127.0.0.1:9300" >> /etc/g
 sed -i -e 's/elasticsearch_shards = 4/elasticsearch_shards = 1/g' /etc/graylog/server/server.conf
 
 SECRET=$(pwgen -s 96 1)
-sudo -E sed -i -e 's/password_secret =.*/password_secret = '$SECRET'/' /etc/graylog/server/server.conf
+sed -i -e 's/password_secret =.*/password_secret = '$SECRET'/' /etc/graylog/server/server.conf
 
 start graylog-server
 
@@ -47,6 +47,6 @@ start graylog-server
 apt-get -y install graylog-web
 
 SECRET=$(pwgen -s 96 1)
--E sed -i -e 's/application\.secret=""/application\.secret="'$SECRET'"/' /etc/graylog/web/web.conf
+sed -i -e 's/application\.secret=""/application\.secret="'$SECRET'"/' /etc/graylog/web/web.conf
 sed -i -e 's/graylog2-server.uris=""/graylog2-server.uris="http:\/\/127.0.0.1:12900\/"/g' /etc/graylog/web/web.conf
 start graylog-web
