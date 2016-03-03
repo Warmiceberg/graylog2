@@ -5,7 +5,7 @@
 	"links": [
 		{
 			"title": "Graylog Backend",
-			"url": "http://{{DOMAIN}}/"
+			"url": "http://{{DOMAIN}}:9000/"
 		},
 		{
 			"title": "Set admin user and pass",
