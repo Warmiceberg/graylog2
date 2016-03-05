@@ -1,19 +1,19 @@
 #!/bin/bash
-sudo apt-get install -y python-software-properties debconf-utils pwgen
+apt-get install -y python-software-properties debconf-utils pwgen
 
 
 add-apt-repository ppa:webupd8team/java
 apt-key adv --keyserver keyserver.ubuntu.com --recv 7F0CEB10
-echo "deb http://repo.mongodb.org/apt/ubuntu "$(lsb_release -sc)"/mongodb-org/3.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.0.list
-wget -qO - https://packages.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
-echo "deb http://packages.elastic.co/elasticsearch/1.7/debian stable main" | sudo tee -a /etc/apt/sources.list.d/elasticsearch-1.7.x.list
+echo "deb http://repo.mongodb.org/apt/ubuntu "$(lsb_release -sc)"/mongodb-org/3.0 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-3.0.list
+wget -qO - https://packages.elastic.co/GPG-KEY-elasticsearch | apt-key add -
+echo "deb http://packages.elastic.co/elasticsearch/1.7/debian stable main" | tee -a /etc/apt/sources.list.d/elasticsearch-1.7.x.list
 apt-get -y update
 
 #MongoDB
 apt-get -y install mongodb-org
 
 # Install java
-echo "oracle-java8-installer shared/accepted-oracle-license-v1-1 select true" | sudo debconf-set-selections
+echo "oracle-java8-installer shared/accepted-oracle-license-v1-1 select true" | debconf-set-selections
 apt-get -y install oracle-java8-installer
 
 
@@ -42,7 +42,7 @@ SECRET=$(pwgen -s 96 1)
 sed -i -e 's/password_secret =.*/password_secret = '$SECRET'/' /etc/graylog/server/server.conf
 
 PASSWORD=$(echo -n password | shasum -a 256 | awk '{print $1}')
-sudo -E sed -i -e 's/root_password_sha2 =.*/root_password_sha2 = '$PASSWORD'/' /etc/graylog/server/server.conf
+sed -i -e 's/root_password_sha2 =.*/root_password_sha2 = '$PASSWORD'/' /etc/graylog/server/server.conf
 
 start graylog-server
 
