@@ -2,6 +2,9 @@
 	"name": "ashleyhindle/fodor-graylog2",
 	"installpath": "/tmp/fodor-graylog2/",
 	"provisioner": "fodor/provisioner.sh",
+	"text": {
+		"complete": "User/Pass: admin/password"
+	},
 	"links": [
 		{
 			"title": "Graylog Backend",
