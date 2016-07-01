@@ -33,7 +33,9 @@ apt-get install apt-transport-https
 apt-get install graylog-server
 
 # graylog-server config file
-echo "rest_transport_uri = http://127.0.0.1:12900/" >> /etc/graylog/server/server.conf
+sed -i -e "s/rest_listen_uri = http:\/\/127.0.0.1:12900\//rest_listen_uri = http:\/\/${DOMAIN}:12900\//g" /etc/graylog/server/server.conf
+sed -i -e "s/#web_listen_uri = http:\/\/127.0.0.1:9000\//web_listen_uri = http:\/\/${DOMAIN}:9000\//g" /etc/graylog/server/server.conf
+
 echo "elasticsearch_cluster_name = graylog" >> /etc/graylog/server/server.conf
 echo "elasticsearch_discovery_zen_ping_multicast_enabled = false" >> /etc/graylog/server/server.conf
 echo "elasticsearch_discovery_zen_ping_unicast_hosts = 127.0.0.1:9300" >> /etc/graylog/server/server.conf
