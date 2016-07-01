@@ -20,7 +20,8 @@ apt-get -y install oracle-java8-installer
 
 # Install Elasticsearch
 apt-get -y install elasticsearch
-sed -i -e 's/#cluster.name: elasticsearch/cluster.name: graylog/g' /etc/elasticsearch/elasticsearch.yml
+sed -i -e 's/# cluster.name: my-application$/cluster.name: graylog/g' /etc/elasticsearch/elasticsearch.yml
+
 service elasticsearch restart
 update-rc.d elasticsearch defaults 95 10
 
