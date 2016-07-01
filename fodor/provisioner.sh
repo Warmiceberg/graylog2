@@ -5,8 +5,9 @@ apt-get install -y python-software-properties debconf-utils pwgen
 add-apt-repository ppa:webupd8team/java
 apt-key adv --keyserver keyserver.ubuntu.com --recv 7F0CEB10
 echo "deb http://repo.mongodb.org/apt/ubuntu "$(lsb_release -sc)"/mongodb-org/3.0 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-3.0.list
+
 wget -qO - https://packages.elastic.co/GPG-KEY-elasticsearch | apt-key add -
-echo "deb http://packages.elastic.co/elasticsearch/1.7/debian stable main" | tee -a /etc/apt/sources.list.d/elasticsearch-1.7.x.list
+echo "deb https://packages.elastic.co/elasticsearch/2.x/debian stable main" | tee -a /etc/apt/sources.list.d/elasticsearch-2.x.list
 apt-get -y update
 
 #MongoDB
@@ -24,12 +25,11 @@ service elasticsearch restart
 update-rc.d elasticsearch defaults 95 10
 
 # Install graylog-server
-wget https://packages.graylog2.org/repo/packages/graylog-1.3-repository-ubuntu14.04_latest.deb
-dpkg -i graylog-1.3-repository-ubuntu14.04_latest.deb
+wget https://packages.graylog2.org/repo/packages/graylog-2.0-repository_latest.deb
+dpkg -i graylog-2.0-repository_latest.deb
 apt-get -y update
 apt-get install apt-transport-https
 apt-get install graylog-server
-
 
 # graylog-server config file
 echo "rest_transport_uri = http://127.0.0.1:12900/" >> /etc/graylog/server/server.conf
@@ -45,11 +45,3 @@ PASSWORD=$(echo -n password | shasum -a 256 | awk '{print $1}')
 sed -i -e 's/root_password_sha2 =.*/root_password_sha2 = '$PASSWORD'/' /etc/graylog/server/server.conf
 
 start graylog-server
-
-# Install graylog-web
-apt-get -y install graylog-web
-
-SECRET=$(pwgen -s 96 1)
-sed -i -e 's/application\.secret=""/application\.secret="'$SECRET'"/' /etc/graylog/web/web.conf
-sed -i -e 's/graylog2-server.uris=""/graylog2-server.uris="http:\/\/127.0.0.1:12900\/"/g' /etc/graylog/web/web.conf
-start graylog-web
