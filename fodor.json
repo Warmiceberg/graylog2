@@ -28,12 +28,5 @@
 	"keywords": ["fodor", "graylog", "graylog2", "logstash"],
 	"homepage": "https://github.com/ashleyhindle/fodor-graylog2",
 	"inputs": [
-		{
-			"title": "Fake API Key",
-			"name": "fakeapikey",
-			"placeholder": "xxxx-xxxx-xxxx-xxxx",
-			"type": "regex",
-			"regex": "[a-zA-Z\\-0-9]+"
-		}
 	]
 }
