@@ -24,7 +24,7 @@
 		"required": "2gb"
 	},
 	"distro": "ubuntu-14-04-x64",
-	"description": "Automatically sets up a Graylog2 instance",
+	"description": "Automatically sets up a Graylog2 instance on DigitalOcean",
 	"keywords": ["fodor", "graylog", "graylog2", "logstash"],
 	"homepage": "https://github.com/fodorxyz/graylog2",
 	"inputs": [
