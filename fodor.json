@@ -1,6 +1,6 @@
 {
-	"name": "ashleyhindle/fodor-graylog2",
-	"installpath": "/tmp/fodor-graylog2/",
+	"name": "fodorxyz/graylog2",
+	"installpath": "/tmp/graylog2/",
 	"provisioner": "fodor/provisioner.sh",
 	"text": {
 		"complete": "User/Pass: admin/password - it may take a minute for the graylog service to start"
@@ -26,7 +26,7 @@
 	"distro": "ubuntu-14-04-x64",
 	"description": "Automatically sets up a Graylog2 instance",
 	"keywords": ["fodor", "graylog", "graylog2", "logstash"],
-	"homepage": "https://github.com/ashleyhindle/fodor-graylog2",
+	"homepage": "https://github.com/fodorxyz/graylog2",
 	"inputs": [
 	]
 }
