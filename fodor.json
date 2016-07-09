@@ -27,6 +27,7 @@
 	"description": "Automatically sets up a Graylog2 instance on DigitalOcean",
 	"keywords": ["fodor", "graylog", "graylog2", "logstash"],
 	"homepage": "https://github.com/fodorxyz/graylog2",
+	"images": "https://www.graylog.org/assets/screen_search-32328ac9373f69348986e0033644c4a8098f5ae01270c3fef099aab6f05c3bbc.jpg",
 	"inputs": [
 	]
 }
