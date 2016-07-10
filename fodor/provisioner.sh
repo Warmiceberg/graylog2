@@ -44,7 +44,7 @@ sed -i -e 's/elasticsearch_shards = 4/elasticsearch_shards = 1/g' /etc/graylog/s
 SECRET=$(pwgen -s 96 1)
 sed -i -e 's/password_secret =.*/password_secret = '$SECRET'/' /etc/graylog/server/server.conf
 
-PASSWORD=$(echo -n password | shasum -a 256 | awk '{print $1}')
+PASSWORD=$(echo -n $ADMIN_PASSWORD | shasum -a 256 | awk '{print $1}')
 sed -i -e 's/root_password_sha2 =.*/root_password_sha2 = '$PASSWORD'/' /etc/graylog/server/server.conf
 
 start graylog-server
