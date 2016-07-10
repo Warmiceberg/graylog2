@@ -3,7 +3,7 @@
 	"installpath": "/tmp/graylog2/",
 	"provisioner": "fodor/provisioner.sh",
 	"text": {
-		"complete": "User/Pass: admin/password - it may take a minute for the graylog service to start"
+		"complete": "Username/Password: admin/[password provided] - it may take a minute for the graylog service to start"
 	},
 	"links": [
 		{
