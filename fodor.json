@@ -29,5 +29,12 @@
 	"homepage": "https://github.com/fodorxyz/graylog2",
 	"image": "https://s3.amazonaws.com/graylogblog/2.0_alpha2/livetail.gif",
 	"inputs": [
+		{
+			"title": "Admin Password",
+			"name": "admin_password",
+			"type": "password",
+			"notes": "Must be more than 6 characters",
+			"regex": ".{6,}"
+		}
 	]
 }
