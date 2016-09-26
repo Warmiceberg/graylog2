@@ -2,7 +2,7 @@
 apt-get install -y python-software-properties debconf-utils pwgen
 
 
-add-apt-repository ppa:webupd8team/java
+add-apt-repository -y ppa:webupd8team/java
 apt-key adv --keyserver keyserver.ubuntu.com --recv 7F0CEB10
 echo "deb http://repo.mongodb.org/apt/ubuntu "$(lsb_release -sc)"/mongodb-org/3.0 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-3.0.list
 
