@@ -26,8 +26,8 @@ service elasticsearch restart
 update-rc.d elasticsearch defaults 95 10
 
 # Install graylog-server
-wget https://packages.graylog2.org/repo/packages/graylog-2.0-repository_latest.deb
-dpkg -i graylog-2.0-repository_latest.deb
+wget https://packages.graylog2.org/repo/packages/graylog-2.1-repository_latest.deb
+dpkg -i graylog-2.1-repository_latest.deb
 apt-get -y update
 apt-get install apt-transport-https
 apt-get install graylog-server
